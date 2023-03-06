@@ -41,7 +41,6 @@ boutonFiltreTous.addEventListener("click", function () {
     });
     document.querySelector(".gallery").innerHTML = "";
     afficherProjets(projetsFiltres);
-    console.log(projetsFiltres);
 });
 
 const boutonFiltreObjets = document.querySelector("#boutonFiltreObjets");
@@ -52,7 +51,6 @@ boutonFiltreObjets.addEventListener("click", function () {
     });
     document.querySelector(".gallery").innerHTML = "";
     afficherProjets(projetsFiltres);
-    console.log(projetsFiltres);
 });
 
 const boutonFiltreAppartements = document.querySelector("#boutonFiltreAppartements");
@@ -63,7 +61,6 @@ boutonFiltreAppartements.addEventListener("click", function () {
     });
     document.querySelector(".gallery").innerHTML = "";
     afficherProjets(projetsFiltres);
-    console.log(projetsFiltres);
 });
 
 const boutonFiltreHotelsRestau = document.querySelector("#boutonFiltreHotelsRestau");
@@ -74,5 +71,4 @@ boutonFiltreHotelsRestau.addEventListener("click", function () {
     });
     document.querySelector(".gallery").innerHTML = "";
     afficherProjets(projetsFiltres);
-    console.log(projetsFiltres);
 });

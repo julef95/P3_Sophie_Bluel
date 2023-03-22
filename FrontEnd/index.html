@@ -10,25 +10,44 @@
 	<link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Work+Sans&display=swap" rel="stylesheet">
 	<meta name="description" content="">
 	<link rel="stylesheet" href="./assets/style.css">
+	<link rel="stylesheet" href="./assets/modale.css">
 	<script type="module" src="./JS/projets.js"></script>
+	<script type="module" src="./JS/acces_editeur.js"></script>
+	<script type="module" src="./JS/modale.js"></script>
+	<script src="https://kit.fontawesome.com/029bf30f2f.js" crossorigin="anonymous"></script>
 </head>
 
 <body>
 
 <header>
+<!-- ELEMENT EDITEUR-->
+	<section class="element-editeur" id="bandeau-editeur">
 
-	<a href='http://127.0.0.1:5500/FrontEnd/index.html' class="lien-logo">
-	<h1>Sophie Bluel <span>Architecte d'inteérieur</span></h1>
-	</a>
+		<div id="icone-bandeau">
+			<i class="fa-solid fa-pen-to-square"></i>
+			<p>Mode édition</p>
+		</div>
 
-	<nav>
-		<ul>
-			<li>projets</li>
-			<li>contact</li>
-			<li><a href='http://127.0.0.1:5500/FrontEnd/connexion.html' class="lien-entete">login</a></li>
-			<li><img src="./assets/icons/instagram.png" alt="Instagram"></li>
-		</ul>
-	</nav>
+		<button id="bouton-bandeau">publier les changements</button>
+
+	</section>
+
+	<div class="en-tete">
+		<a href='http://127.0.0.1:5500/FrontEnd/index.html' class="lien-logo">
+		<h1>Sophie Bluel <span>Architecte d'inteérieur</span></h1>
+		</a>
+
+		<nav>
+			<ul>
+				<li>projets</li>
+				<li>contact</li>
+				<li><a href='http://127.0.0.1:5500/FrontEnd/connexion.html' class="lien-entete" id="lien-login">login</a></li>
+<!-- ELEMENT EDITEUR-->
+				<li><a href='http://127.0.0.1:5500/FrontEnd/index.html' class="element-editeur lien-entete" id="lien-logout">logout</a></li>
+				<li><img src="./assets/icons/instagram.png" alt="Instagram"></li>
+			</ul>
+		</nav>
+	</div>
 
 </header>
 
@@ -37,6 +56,11 @@
 	<section id="introduction">
 		<figure>
 			<img src="./assets/images/sophie-bluel.png" alt="">
+<!-- ELEMENT EDITEUR-->
+			<a href="" class="element-editeur lien-modale" id="edition-photo">
+				<i class="fa-solid fa-pen-to-square"></i>
+				<p>modifier</p>
+			</a>
 		</figure>
 		<article>
 			<h2>Designer d'espace</h2>
@@ -48,7 +72,33 @@
 
 	<section id="portfolio">
 
-		<h2>Mes Projets</h2>
+		<div id="titre-projets">
+			<h2>Mes Projets</h2>
+<!-- ELEMENT EDITEUR-->
+			<a href="#modale-galerie" class="element-editeur lien-modale" id="edition-projets">
+				<i class="fa-solid fa-pen-to-square"></i>
+				<p>modifier</p>
+			</a>
+		</div>
+
+
+<!-- DEBUT CODE MODALE-->
+		<aside id="modale-galerie" class="modale" style="display:none">
+
+			<div class="divmodale" id="divmodale-galerie" style="display:none">
+				<a href="" id="bouton-fermer"><i class="fa-solid fa-xmark fa-lg"></i></a>
+				<h3 class="titre-modale">Galerie photo</h3>
+				<div id="galerie-modale">
+
+				</div>
+				<div id="divbouton-modale">
+					<button class="bouton-modale">Ajouter une photo</button>
+				</div>
+				<a href="" id="suppression-galerie">Supprimer la galerie</a>
+			</div>
+
+		</aside>
+<!-- FIN CODE MODALE-->
 
 		<div class="filtres">
 			<button class="boutonFiltre" id="boutonFiltreTous">Tous</button>

@@ -53,11 +53,47 @@ body {
 	font-family: 'Work Sans' ;
 	font-size: 14px;
 }
+
 header {
+	display: flex;
+	flex-direction: column;
+}
+
+#bandeau-editeur {
+	margin : 0;
+	height : 60px;
+
+	justify-content: center;
+	align-items: center;
+	background-color: black;
+}
+
+#icone-bandeau {
+	display: flex;
+	margin-right : 20px;
+	color: white;
+}
+
+#bouton-bandeau {
+	background: #FFFFFF;
+	border-radius: 60px;
+	padding : 11px 23px 11px 23px;
+
+	font-family: 'Work Sans';
+	font-style: normal;
+	font-weight: 500;
+	font-size: 14px;
+	line-height: 16px;
+	text-align: center;
+	color: #000000;
+}
+
+.en-tete {
 	display: flex;
 	justify-content: space-between;
 	margin: 50px 0
 }
+
 section {
 	margin: 50px 0
 }
@@ -220,14 +256,46 @@ footer nav ul {
 	text-decoration: underline;
 }
 
-.edition {
-	display: flex;
-}
-
 .lien-logo, .lien-entete {
 	text-decoration: none;
 }
 
 .lien-entete {
 	color : black;
+}
+
+.lien-modale {
+	display: flex;
+	text-decoration : none;
+	color : black;
+}
+
+.fa-pen-to-square {
+	margin-right : 7px;
+}
+
+#edition-photo {
+	width : 80px;
+	margin-left: 10%;
+	padding-top : 13px;
+}
+
+#titre-projets {
+    display: flex;
+    justify-content: center;
+	align-items: center;
+}
+
+#titre {
+	text-align: center;
+    margin: 0px;
+}
+
+#edition-projets {
+    margin-left: 1em;
+	margin-bottom : 30px;
+}
+
+.element-editeur {
+	display : none;
 }

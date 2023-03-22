@@ -36,11 +36,8 @@ afficherProjets(projets);
 const boutonFiltreTous = document.querySelector("#boutonFiltreTous");
 
 boutonFiltreTous.addEventListener("click", function () {
-    const projetsFiltres = projets.filter(function (projets) {
-        return projets;
-    });
     document.querySelector(".gallery").innerHTML = "";
-    afficherProjets(projetsFiltres);
+    afficherProjets(projets);
 });
 
 const boutonFiltreObjets = document.querySelector("#boutonFiltreObjets");

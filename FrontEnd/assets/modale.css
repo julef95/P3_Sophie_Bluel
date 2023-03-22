@@ -1,0 +1,90 @@
+.modale {
+
+    position:fixed;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    background: rgba(0, 0, 0, 0.3);
+}
+
+.divmodale {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width : 44%;
+    max-width : 650px;
+    padding : 4% 6% 4% 6%; 
+
+    background: #FFFFFF;
+    border-radius: 10px;
+}
+
+.titre-modale {
+    margin-bottom : 45px;
+    font-family: 'Work Sans';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 26px;
+    line-height: 30px;
+    text-align: center;
+    color: #000000;
+}
+
+.bouton-modale {
+    padding: 10px 50px 10px 50px;
+    background: #1D6154;
+    border-radius: 60px;
+    border-style: none;
+
+    font-family: 'Syne';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 17px;
+    text-align: center;
+    color: #FFFFFF;
+}
+
+#divbouton-modale {
+    display: flex;
+    justify-content: center;
+    padding-top : 38px;
+    margin-bottom : 23px;
+    border-top: 1px solid #B3B3B3;
+
+}
+
+#suppression-galerie {
+    margin : auto;
+    text-decoration: none;
+    font-family: 'Syne';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 17px;
+    text-align: center;
+    color: #D65353;
+}
+
+#bouton-fermer {
+    display: flex;
+    justify-content: right;
+    text-decoration: none;
+}
+
+#galerie-modale {
+    margin-bottom : 67px;
+	width: 100%;
+	display: grid;
+	grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+	grid-column-gap: 1%;
+	grid-row-gap: 25px;
+}
+
+#galerie-modale img {
+	width: 100%;
+}

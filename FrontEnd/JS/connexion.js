@@ -1,18 +1,18 @@
-// 1. Récupérer le formulaire et les champs email et mot de passe
-const formulaireConnexion = document.querySelector('#formulaireConnexion');
-const email = document.querySelector('#email');
-const mdp = document.querySelector('#mdp');
-const messageErreur = document.getElementById("messageErreur");
+// Déclaration des éléments en JS
+const formulaireConnexion = document.querySelector('#formulaire-connexion form');
+const email = document.querySelector('#email-connexion');
+const mdp = document.querySelector('#mdp-connexion');
+const messageErreur = document.getElementById("message-erreur-connexion");
 
-// 2. Ajouter un écouteur d'événement sur la soumission du formulaire
+// Ajoute un écouteur d'événement lors de la soumission du formulaire
 formulaireConnexion.addEventListener('submit', async (event) => {
-    event.preventDefault(); // empêcher le comportement par défaut du formulaire
+    event.preventDefault(); // Empêche le comportement par défaut du formulaire
 
-    // 3. Récupérer les valeurs des champs email et mot de passe
+    // Récupère les données
     const emailValeur = email.value;
     const mdpValeur = mdp.value;
 
-    // 4. Envoyer une requête POST à l'API d'authentification
+    // Envoie une requête POST à l'API d'authentification
     try {
         const response = await fetch('http://localhost:5678/api/users/login', {
             method: 'POST',
@@ -22,15 +22,16 @@ formulaireConnexion.addEventListener('submit', async (event) => {
             body: JSON.stringify({ email: emailValeur, password: mdpValeur }),
         });
 
-        // 5. Vérifier le code de statut de la réponse
+        // Vérifie le statut de la réponse
         if (response.ok) {
-            //stock le token d'identification dans le localStorage
+            // Stock le token d'identification communiqué par l'API dans le localStorage et redirige l'utilisateur vers la page d'acceuil
+            // La vérification de la présence token se fait au chargement de la page, le code est dans le fichier acces-editeur
             const data = await response.json();
             localStorage.setItem('token', data.token);
-            // redirige l'utilisateur vers la page d'accueil
             window.location.href = 'http://127.0.0.1:5500/FrontEnd/index.html';
+
         } else {
-            messageErreur.textContent = "Email ou mot de passe incorrect";
+            messageErreur.textContent = "Erreur dans l’identifiant ou le mot de passe";
         }
 
     } catch (error) {

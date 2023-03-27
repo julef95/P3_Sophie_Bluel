@@ -49,7 +49,7 @@ table {
 /** end reset css**/
 body {
 	max-width: 1140px;
-	margin:auto;
+	margin: auto;
 	font-family: 'Work Sans' ;
 	font-size: 14px;
 }
@@ -59,39 +59,15 @@ header {
 	flex-direction: column;
 }
 
-#bandeau-editeur {
-	margin : 0;
-	height : 60px;
-
-	justify-content: center;
-	align-items: center;
-	background-color: black;
-}
-
-#icone-bandeau {
-	display: flex;
-	margin-right : 20px;
-	color: white;
-}
-
-#bouton-bandeau {
-	background: #FFFFFF;
-	border-radius: 60px;
-	padding : 11px 23px 11px 23px;
-
-	font-family: 'Work Sans';
-	font-style: normal;
-	font-weight: 500;
-	font-size: 14px;
-	line-height: 16px;
-	text-align: center;
-	color: #000000;
-}
-
 .en-tete {
 	display: flex;
 	justify-content: space-between;
 	margin: 50px 0
+}
+
+.lien-logo, .lien-entete {
+	text-decoration: none;
+	color : black;
 }
 
 section {
@@ -131,7 +107,7 @@ nav li {
 	font-size: 1.2em;
 }
 
-li:hover {
+li a:hover {
 	color: #B1663C;
 }
 #introduction {
@@ -162,6 +138,12 @@ li:hover {
 	margin-bottom: 1em;
 }
 
+#titre-projets {
+    display: flex;
+    justify-content: center;
+	align-items: center;
+}
+
 .filtres {
 	display: flex;
 	margin :0px auto 50px auto;
@@ -169,7 +151,7 @@ li:hover {
 	justify-content: space-between;
 }
 
-.boutonFiltre {
+.bouton-filtre {
 	padding: 0px 20px 0px 20px;
 	height: 37px;
 
@@ -183,9 +165,10 @@ li:hover {
 	line-height: 19px;
 	text-align: center;
 	color: #1D6154;
+	cursor: pointer;
 }
 
-.boutonFiltre:hover {
+.bouton-filtre:hover {
 	background: #1D6154;
 	color: #FFFFFF;
 }
@@ -202,34 +185,40 @@ li:hover {
 	width: 100%;
 
 }
-#contact, #connexion {
+
+#contact, #formulaire-connexion {
 	width: 50%;
 	margin: auto;
 }
-#contact, #connexion > * {
+
+#contact, #formulaire-connexion > * {
 	text-align: center;
 
 }
-#contact h2, #connexion h2{
+
+#contact h2, #formulaire-connexion h2{
 	margin-bottom: 20px;
 }
-#contact form, #connexion form  {
+
+#contact form, #formulaire-connexion form  {
 	text-align: left;
 	margin-top:30px;
 	display: flex;
 	flex-direction: column;
 }
 
-#contact input, #connexion input {
+#contact input, #formulaire-connexion input {
 	height: 50px;
 	font-size: 1.2em;
 	border: none;
 	box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.09);
 }
-#contact label, #connexion label {
+
+#contact label, #formulaire-connexion label {
 	margin: 2em 0 1em 0;
 }
-#contact textarea, #contact textarea {
+
+#contact textarea, #formulaire-connexion textarea {
 	border: none;
 	box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.09);
 }
@@ -245,23 +234,61 @@ input[type="submit"]{
 	border-radius: 60px ;
 }
 
+#bouton-connexion {
+	cursor: pointer;
+}
+
+#mdp-oublie {
+	text-align: center;
+	text-decoration: underline;
+	cursor: pointer;
+}
+
 footer nav ul {
 	display: flex;
 	justify-content: flex-end;
 	margin: 2em;
 }
 
-#mdpOublie {
+#footer-connexion {
+	margin-top : 355px;
+}
+
+/* STYLE ELEMENTS MODE EDITEUR */
+
+#bandeau-editeur {
+	position : fixed;
+	top : 0;
+	left : 0;
+	display : flex;
+	width: 100%;
+	margin: 0;
+	height : 60px;
+
+	justify-content: center;
+	align-items: center;
+	background-color: black;
+}
+
+#icone-bandeau-editeur {
+	display: flex;
+	margin-right : 20px;
+	color: white;
+}
+
+#bouton-bandeau-editeur {
+	background: #FFFFFF;
+	border-radius: 60px;
+	padding : 11px 23px 11px 23px;
+
+	font-family: 'Work Sans';
+	font-style: normal;
+	font-weight: 500;
+	font-size: 14px;
+	line-height: 16px;
 	text-align: center;
-	text-decoration: underline;
-}
-
-.lien-logo, .lien-entete {
-	text-decoration: none;
-}
-
-.lien-entete {
-	color : black;
+	color: #000000;
+	cursor: pointer;
 }
 
 .lien-modale {
@@ -274,28 +301,13 @@ footer nav ul {
 	margin-right : 7px;
 }
 
-#edition-photo {
+#lien-edition-photo {
 	width : 80px;
 	margin-left: 10%;
 	padding-top : 13px;
 }
 
-#titre-projets {
-    display: flex;
-    justify-content: center;
-	align-items: center;
-}
-
-#titre {
-	text-align: center;
-    margin: 0px;
-}
-
-#edition-projets {
+#lien-edition-projets {
     margin-left: 1em;
 	margin-bottom : 30px;
-}
-
-.element-editeur {
-	display : none;
 }

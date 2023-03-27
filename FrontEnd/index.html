@@ -20,15 +20,16 @@
 <body>
 
 <header>
-<!-- ELEMENT EDITEUR-->
-	<section class="element-editeur" id="bandeau-editeur">
 
-		<div id="icone-bandeau">
+	<!-- ELEMENT EDITEUR-->
+	<section class="element-editeur" id="bandeau-editeur" style="display:none">
+
+		<div id="icone-bandeau-editeur">
 			<i class="fa-solid fa-pen-to-square"></i>
 			<p>Mode édition</p>
 		</div>
 
-		<button id="bouton-bandeau">publier les changements</button>
+		<button id="bouton-bandeau-editeur">publier les changements</button>
 
 	</section>
 
@@ -39,12 +40,14 @@
 
 		<nav>
 			<ul>
-				<li>projets</li>
-				<li>contact</li>
+				<li><a href="#portfolio" class="lien-entete">projets</a></li>
+				<li><a href="#contact" class="lien-entete">contact</a></li>
 				<li><a href='http://127.0.0.1:5500/FrontEnd/connexion.html' class="lien-entete" id="lien-login">login</a></li>
-<!-- ELEMENT EDITEUR-->
-				<li><a href='http://127.0.0.1:5500/FrontEnd/index.html' class="element-editeur lien-entete" id="lien-logout">logout</a></li>
-				<li><img src="./assets/icons/instagram.png" alt="Instagram"></li>
+
+				<!-- ELEMENT EDITEUR-->
+				<li><a href='http://127.0.0.1:5500/FrontEnd/index.html' class="element-editeur lien-entete" id="lien-logout" style="display:none">logout</a></li>
+				
+				<li><a href="#" class="lien-entete"><img src="./assets/icons/instagram.png" alt="Instagram"></a></li>
 			</ul>
 		</nav>
 	</div>
@@ -54,57 +57,116 @@
 <main>
 
 	<section id="introduction">
+
 		<figure>
 			<img src="./assets/images/sophie-bluel.png" alt="">
-<!-- ELEMENT EDITEUR-->
-			<a href="" class="element-editeur lien-modale" id="edition-photo">
+
+			<!-- ELEMENT EDITEUR-->
+			<a href="#" class="element-editeur lien-modale" id="lien-edition-photo" style="display:none">
 				<i class="fa-solid fa-pen-to-square"></i>
 				<p>modifier</p>
 			</a>
+
 		</figure>
+
 		<article>
+			<!-- ELEMENT EDITEUR-->
+			<a href="#" class="element-editeur lien-modale" id="lien-edition-intro" style="display:none">
+				<i class="fa-solid fa-pen-to-square"></i>
+				<p>modifier</p>
+			</a>
+
 			<h2>Designer d'espace</h2>
 			<p>Je raconte votre histoire, je valorise vos idées. Je vous accompagne de la conception à la livraison finale du chantier.</p>
 			<p>Chaque projet sera étudié en commun, de façon à mettre en valeur les volumes, les matières et les couleurs dans le respect de l’esprit des lieux et le choix adapté des matériaux. Le suivi du chantier sera assuré dans le souci du détail, le respect du planning et du budget.</p>
 			<p>En cas de besoin, une équipe pluridisciplinaire peut-être constituée : architecte DPLG, décorateur(trice)</p>
 		</article>
+
 	</section>
 
 	<section id="portfolio">
 
 		<div id="titre-projets">
 			<h2>Mes Projets</h2>
-<!-- ELEMENT EDITEUR-->
-			<a href="#modale-galerie" class="element-editeur lien-modale" id="edition-projets">
+			<!-- ELEMENT EDITEUR-->
+			<a href="#" class="element-editeur lien-modale" id="lien-edition-projets" style="display:none">
 				<i class="fa-solid fa-pen-to-square"></i>
 				<p>modifier</p>
 			</a>
+
 		</div>
 
+	<aside id="arriere-modale" style="display:none">
+<!-- 
+	DEBUT CODE MODALE 1 GALERIE
+-->
 
-<!-- DEBUT CODE MODALE-->
-		<aside id="modale-galerie" class="modale" style="display:none">
 
-			<div class="divmodale" id="divmodale-galerie" style="display:none">
-				<a href="" id="bouton-fermer"><i class="fa-solid fa-xmark fa-lg"></i></a>
+
+			<div class="fenetre-modale" id="modale-projets" style="display:none">
+				<a href="" id="icone-modale-projets"><i class="fa-solid fa-xmark fa-lg"></i></a>
 				<h3 class="titre-modale">Galerie photo</h3>
 				<div id="galerie-modale">
 
 				</div>
-				<div id="divbouton-modale">
-					<button class="bouton-modale">Ajouter une photo</button>
+				<div id="division-bouton-modale-projets">
+					<button class="bouton-modale" id="bouton-vers-modale-ajout">Ajouter une photo</button>
 				</div>
-				<a href="" id="suppression-galerie">Supprimer la galerie</a>
+				<a href="#" id="bouton-suppression-galerie">Supprimer la galerie</a>
 			</div>
 
-		</aside>
-<!-- FIN CODE MODALE-->
+		
+<!-- 
+	FIN CODE MODALE 1 GALERIE
+-->
 
+<!-- 
+	DEBUT CODE MODALE 2 AJOUT
+-->
+
+			<div class="fenetre-modale" id="modale-ajout" style="display:none">
+				<a href="#" id="icones-modale-ajout">
+					<i class="fa-solid fa-arrow-left fa-lg"></i>
+					<i class="fa-solid fa-xmark fa-lg" id="bouton-fermer-modale-ajout"></i>
+				</a>
+				<h3 class="titre-modale">Ajout photo</h3>
+
+				<form id="formulaire-ajout">
+					<div id="carre-bleu">
+						<div id="ajout-image">
+							<i class="fa-sharp fa-regular fa-image fa-2xl"></i>
+							<input type="file" class="bouton-modale" id="image" name="image" accept="image/*" placeholder="test" required>
+							<p>jpg, png : 4mo max</p>
+						</div>
+						<div id="division-preview-image">
+							<img id="preview-image">
+						</div>
+					</div>
+					<div id="champs-input">
+						<label for="title">Titre</label>
+						<input type="text" name="title" id="title" required>
+						<label for="category">Catégorie</label>
+						<select id="category" name="category" required>
+							<option value=1>Objet</option>
+							<option value=2>Appartement</option>
+							<option value=3>Hôtel ou restaurant</option>
+						</select>
+					</div>
+					  <input type="submit" class="bouton-modale" id="bouton-modale-ajout" value="Valider">
+				</form>
+				
+			</div>
+
+<!-- 
+	FIN CODE MODALE 2 AJOUT
+-->
+	</aside>
+		
 		<div class="filtres">
-			<button class="boutonFiltre" id="boutonFiltreTous">Tous</button>
-			<button class="boutonFiltre" id="boutonFiltreObjets">Objets</button>
-			<button class="boutonFiltre" id="boutonFiltreAppartements">Appartements</button>
-			<button class="boutonFiltre" id="boutonFiltreHotelsRestau">Hôtels & restaurants</button>
+			<button class="bouton-filtre" id="bouton-filtre-tous">Tous</button>
+			<button class="bouton-filtre" id="bouton-filtre-objets">Objets</button>
+			<button class="bouton-filtre" id="bouton-filtre-appartements">Appartements</button>
+			<button class="bouton-filtre" id="bouton-filtre-hotels-restaurants">Hôtels & restaurants</button>
 		</div>
 
 		<div class="gallery">

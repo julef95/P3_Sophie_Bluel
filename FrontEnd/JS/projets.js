@@ -1,46 +1,41 @@
 // Récupération des projets depuis l'API
 const reponse = await fetch('http://localhost:5678/api/works');
 const projets = await reponse.json();
-// Transformation des projets en JSON
-const valeurProjets = JSON.stringify(projets);
 
-console.log(valeurProjets)
-
+// Affiche les projets sur la page d'acceuil
 function afficherProjets(projets){
-    for (let i = 0; i < projets.length; i++) {
+    // Récupération de l'élément du DOM qui accueillera les projets
+    const galerie = document.querySelector(".gallery");
 
-        // Récupération de l'élément du DOM qui accueillera les projets
-        const galerie = document.querySelector(".gallery");
+    for (const projet of projets) {
 
         // Création d’une balise dédiée à un projet
-        const projet = document.createElement("projet");
-        projet.dataset.id = projets[i].id
+        const projetElement = document.createElement("figure");
+        projetElement.dataset.id = projet.id
 
-        // Création des balises 
         const imageProjet = document.createElement("img");
-        imageProjet.src = projets[i].imageUrl;
+        imageProjet.src = projet.imageUrl;
 
         const nomProjet = document.createElement("p");
-        nomProjet.innerText = projets[i].title;
+        nomProjet.innerText = projet.title;
 
         // On rattache la balise projet a la section galerie
-        galerie.appendChild(projet);
-
-        projet.appendChild(imageProjet);
-        projet.appendChild(nomProjet);
+        galerie.appendChild(projetElement);
+        projetElement.appendChild(imageProjet);
+        projetElement.appendChild(nomProjet);
     }
 }
-
 afficherProjets(projets);
 
-const boutonFiltreTous = document.querySelector("#boutonFiltreTous");
+// Filtre les projets en fonction des catégories
+const boutonFiltreTous = document.querySelector("#bouton-filtre-tous");
 
 boutonFiltreTous.addEventListener("click", function () {
     document.querySelector(".gallery").innerHTML = "";
     afficherProjets(projets);
 });
 
-const boutonFiltreObjets = document.querySelector("#boutonFiltreObjets");
+const boutonFiltreObjets = document.querySelector("#bouton-filtre-objets");
 
 boutonFiltreObjets.addEventListener("click", function () {
     const projetsFiltres = projets.filter(function (projets) {
@@ -50,7 +45,7 @@ boutonFiltreObjets.addEventListener("click", function () {
     afficherProjets(projetsFiltres);
 });
 
-const boutonFiltreAppartements = document.querySelector("#boutonFiltreAppartements");
+const boutonFiltreAppartements = document.querySelector("#bouton-filtre-appartements");
 
 boutonFiltreAppartements.addEventListener("click", function () {
     const projetsFiltres = projets.filter(function (projets) {
@@ -60,9 +55,9 @@ boutonFiltreAppartements.addEventListener("click", function () {
     afficherProjets(projetsFiltres);
 });
 
-const boutonFiltreHotelsRestau = document.querySelector("#boutonFiltreHotelsRestau");
+const boutonFiltreHotelsRestaurants = document.querySelector("#bouton-filtre-hotels-restaurants");
 
-boutonFiltreHotelsRestau.addEventListener("click", function () {
+boutonFiltreHotelsRestaurants.addEventListener("click", function () {
     const projetsFiltres = projets.filter(function (projets) {
         return projets.category.name == "Hotels & restaurants";
     });

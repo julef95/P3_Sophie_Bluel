@@ -26,7 +26,7 @@
                 <ul>
                     <li>projets</li>
                     <li>contact</li>
-                    <li>login</li>
+                    <li style="font-weight:bold">login</li>
                     <li><img src="./assets/icons/instagram.png" alt="Instagram"></li>
                 </ul>
             </nav>
@@ -36,25 +36,25 @@
     
     <main>
 
-        <section id="connexion">
+        <section id="formulaire-connexion">
 
             <h2>Log in</h2>
 
-            <form id="formulaireConnexion">
+            <form>
                 <label for="email">E-mail</label>
-                <input type="email" name="email" id="email" required>
+                <input type="email" name="email" id="email-connexion" required>
                 <label for="mdp">Mot de passe</label>
-                <input type="text" name="mdp" id="mdp" required>
-                <input type="submit" value="Se connecter">
-                <div id="messageErreur"></div>
-                <a id="mdpOublie">Mot de passe oublié</a>
+                <input type="text" name="mdp" id="mdp-connexion" required>
+                <input type="submit" value="Se connecter" id="bouton-connexion">
+                <div id="message-erreur-connexion"></div>
+                <a id="mdp-oublie">Mot de passe oublié</a>
             </form>
 
         </section>
 
     </main>
 
-    <footer>
+    <footer id="footer-connexion">
 
         <nav>
 

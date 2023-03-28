@@ -3,13 +3,15 @@ window.addEventListener('load', async () => {
   const token = localStorage.getItem('token');
   const elements = document.querySelectorAll('.element-editeur');
   const login = document.querySelector('#lien-login');
-  
-  // Si le token est bien présent, affiche les éléments éditeurs et ajoute une marge-top au body pour ne pas que le bandeau éditeur se superpose
+  const filtres = document.querySelector('.filtres');
+
+  // Si le token est bien présent, affiche les éléments éditeurs, cache les filtres et ajoute une marge-top au body pour ne pas que le bandeau éditeur se superpose
   if (token) {
     elements.forEach(element => {
     element.style.display = null;
     });
     login.style.display = 'none';
+    filtres.style.display = 'none';
     document.body.style.marginTop = '60px';
   }
 });

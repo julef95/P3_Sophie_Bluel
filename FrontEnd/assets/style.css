@@ -100,7 +100,6 @@ nav ul {
 	display: flex;
 	align-items: center;
 	list-style-type: none;
-
 }
 nav li {
 	padding: 0 10px;
@@ -110,6 +109,12 @@ nav li {
 li a:hover {
 	color: #B1663C;
 }
+
+#lien-logout {
+	position: relative;
+	right : 15px;
+}
+
 #introduction {
 	display: flex;
 	align-items: center;

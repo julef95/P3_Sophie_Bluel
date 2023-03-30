@@ -1,7 +1,3 @@
-// Récupération des projets depuis l'API
-const reponse = await fetch('http://localhost:5678/api/works');
-const projets = await reponse.json();
-
 // Déclaration de tous les éléments en JS
 const lienModale = document.querySelector('#lien-edition-projets');
 const arriereModale = document.querySelector('#arriere-modale');
@@ -11,10 +7,24 @@ const boutonFermer = document.querySelector('.fa-xmark');
 const boutonRetour = document.querySelector('.fa-arrow-left')
 const boutonAjout = document.querySelector('#bouton-vers-modale-ajout');
 const formulaireAjout = document.querySelector('#formulaire-ajout');
+const erreurEnvoi = document.querySelector('#erreur-envoi');
+const filtres = document.querySelector('.filtres');
+
+
+async function recuperationProjets(){
+  const response = await fetch('http://localhost:5678/api/works');
+  const projets = await response.json();
+  console.log(projets);
+  return projets;
+}
+
+
 
 // Affiche les projets dans la première modale
 function afficherProjetsModale(projets){
   const galerieModale = document.querySelector("#galerie-modale");
+  // "Nettoie la galerie avant de l'ouvrir pour éviter les doubles lors de l'appel au moment de l'ajout d'un nvx projet"
+  galerieModale.innerHTML = "";
 
   for (const projet of projets) {
 
@@ -36,21 +46,23 @@ function afficherProjetsModale(projets){
               projetModale.remove();
           }
       });
-
+      
       galerieModale.appendChild(projetModale);
       projetModale.appendChild(imageProjetModale);
       projetModale.appendChild(iconeSupprimer);
   }
 }
 
-afficherProjetsModale(projets);
+
 
 // Ouvre la modale 1 projets
-const ouvertureModaleProjets = function(event) {
+const ouvertureModaleProjets = async function(event) {
   event.preventDefault();
+  const projets = await recuperationProjets();
 
-  arriereModale.style.display = null;
-  modaleProjets.style.display = null;
+  afficherProjetsModale(projets);
+  arriereModale.style.display = 'flex';
+  modaleProjets.style.display = 'flex';
   modaleAjout.style.display = "none";
 
   arriereModale.addEventListener('click', fermetureModale);
@@ -65,19 +77,20 @@ const stopPropagation = function (event) {
     event.stopPropagation()
 }
 
+
+
 // Ouvre la modale 2 d'ajout et cache la modale 1
 const ouvertureModaleAjout = function(event) {
   //*****Pourquoi querySelectorAll ne fontionne pas sur les i croix pour les boutons fermer des deux modales? */
   const boutonFermerAjout = document.querySelector('#bouton-fermer-modale-ajout');
   event.preventDefault();
 
-  modaleAjout.style.display = null;
-  ajoutImage.style.display = null;
+  modaleAjout.style.display = 'flex';
+  ajoutImage.style.display = 'flex';
   previewImage.style.display = "none";
   modaleProjets.style.display = "none";
-  // Supprime si des données avaient été entrées précédemment sans envoyer le formulaire
-  image.value = null;
-  titre.value = null;
+  //supprimer le titre précédemment entré
+  title.value = null;
   boutonEnvoyer.style.backgroundColor = '#A7A7A7';
   
   formulaireAjout.addEventListener('submit',envoyerFormulaire);
@@ -86,6 +99,8 @@ const ouvertureModaleAjout = function(event) {
   boutonRetour.addEventListener('click', ouvertureModaleProjets);
 }
 
+
+
 // Ferme les modales
 const fermetureModale = function(event) {
   event.preventDefault();
@@ -93,7 +108,10 @@ const fermetureModale = function(event) {
   arriereModale.style.display = "none";
   modaleProjets.style.display = "none";
   modaleAjout.style.display = "none";
+  erreurEnvoi.style.display = "none";
 }
+
+
 
 // Suppression d'un projet
 const token = localStorage.getItem('token');
@@ -109,18 +127,33 @@ function supprimerProjet(idProjet) {
 
   .then(response => {
     if (!response.ok) {
-    throw new Error('Une erreur est survenue.');
+      throw new Error('Une erreur est survenue.');
     }
-  })
 
-  .catch(error => {
-    console.error(error);
-  });
+    // Supprime le projet du DOM pour qu'il disparaisse de la galerie d'acceuil sans avoir à recharger la page
+    const projetSupprime = document.querySelector(`[data-id="${idProjet}"]`);
+    const galerie = document.querySelector(".gallery");
+    galerie.removeChild(projetSupprime); 
+  })
 }
+
+
 
 // Ajout d'un nouveau projet
 function envoyerFormulaire(event) {
   event.preventDefault();
+
+  const title = document.querySelector('#title');
+  const image = document.querySelector('#input-image');
+  const category = document.querySelector('#category');
+
+  console.log(!title.value || !image.value || !category.value);
+  if (!title.value || !image.value || !category.value)  {
+    erreurEnvoi.style.display = 'block';
+  }
+  else {
+    erreurEnvoi.style.display = "none";
+  }
 
   const formData = new FormData(formulaireAjout);
 
@@ -136,6 +169,27 @@ function envoyerFormulaire(event) {
     if (!response.ok) {
     throw new Error('Une erreur est survenue.');
     }
+    return response.json();
+  })
+
+  // Ajoute le projet dans le DOM pour l'afficher dans la galerie acceuil sans recharger la page
+  .then(data => {
+    const projetElement = document.createElement("figure");
+    projetElement.dataset.id = data.id;
+
+    const imageProjet = document.createElement("img");
+    imageProjet.src = data.imageUrl;
+
+    const nomProjet = document.createElement("p");
+    nomProjet.innerText = data.title;
+
+    const galerie = document.querySelector(".gallery");
+    galerie.appendChild(projetElement);
+    projetElement.appendChild(imageProjet);
+    projetElement.appendChild(nomProjet);
+
+    // Ferme la modale après ajout d'un nouveau projet
+    fermetureModale(event);
   })
 
   .catch(error => {
@@ -143,8 +197,10 @@ function envoyerFormulaire(event) {
   });
 }
 
+
+
 // Preview de la photo dans la modale ajout
-const image = document.querySelector('#image');
+const image = document.querySelector('#input-image');
 const ajoutImage = document.querySelector('#ajout-image');
 const previewImage = document.querySelector('#preview-image');
 
@@ -159,7 +215,7 @@ image.addEventListener('change', () => {
   reader.addEventListener('load', () => {
       // Met à jour la source de l'image     
       previewImage.setAttribute('src', reader.result);
-      previewImage.style.display = null;
+      previewImage.style.display = 'flex';
       ajoutImage.style.display = "none";
   });
 
@@ -167,13 +223,15 @@ image.addEventListener('change', () => {
   reader.readAsDataURL(file);
 });
 
+
+
 // Change la couleur du bouton valider si tous les champs sont remplis
-const titre = document.getElementById('title');
-const categorie = document.getElementById('category');
+const title = document.getElementById('title');
+const category = document.getElementById('category');
 const boutonEnvoyer = document.getElementById('bouton-modale-ajout');
 
 const boutonVert = () => {
-  if (image.value && titre.value && categorie.value) {
+  if (image.value && title.value && category.value) {
     boutonEnvoyer.style.backgroundColor = '#1D6154';
     boutonEnvoyer.disabled = false;
   } else {
@@ -183,5 +241,5 @@ const boutonVert = () => {
 };
 
 image.addEventListener('input', boutonVert);
-titre.addEventListener('input', boutonVert);
-categorie.addEventListener('input', boutonVert);
+title.addEventListener('input', boutonVert);
+category.addEventListener('input', boutonVert);

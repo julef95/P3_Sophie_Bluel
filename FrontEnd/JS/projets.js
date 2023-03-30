@@ -1,6 +1,6 @@
 // Récupération des projets depuis l'API
-const reponse = await fetch('http://localhost:5678/api/works');
-const projets = await reponse.json();
+const response = await fetch('http://localhost:5678/api/works');
+const projets = await response.json();
 
 // Affiche les projets sur la page d'acceuil
 function afficherProjets(projets){

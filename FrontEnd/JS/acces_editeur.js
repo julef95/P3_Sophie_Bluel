@@ -8,11 +8,19 @@ window.addEventListener('load', async () => {
   // Si le token est bien présent, affiche les éléments éditeurs, cache les filtres et ajoute une marge-top au body pour ne pas que le bandeau éditeur se superpose
   if (token) {
     elements.forEach(element => {
-    element.style.display = null;
+    element.style.display = 'flex';
     });
     login.style.display = 'none';
     filtres.style.display = 'none';
     document.body.style.marginTop = '60px';
+  }
+  else {
+    elements.forEach(element => {
+    element.style.display = 'none';
+    });
+    login.style.display = 'flex';
+    filtres.style.display = 'flex';
+    document.body.style.marginTop = '0px';
   }
 });
 

@@ -1,6 +1,6 @@
 #arriere-modale {
+    display : none;
     position:fixed;
-    display: flex;
     align-items: center;
     justify-content: center;
     top:0;
@@ -11,7 +11,7 @@
 }
 
 .fenetre-modale {
-    display: flex;
+    display : none;
     flex-direction: column;
     justify-content: center;
     width : 40%;
@@ -150,10 +150,14 @@
 }
 
 #image {
-    width: 50%;
+    padding : 10px 30px;
     margin: 10px auto;
     color: #306685;
     background: #CBD6DC;
+}
+
+#input-image {
+    display : none;
 }
 
 #division-preview-image {
@@ -163,6 +167,7 @@
 }
 
 #preview-image {
+    display :none;
     width : 33%;
     object-fit : cover;
 }
@@ -185,4 +190,8 @@
     margin-top : 30px;
     background: #A7A7A7;
     cursor: pointer;
+}
+
+#erreur-envoi {
+    display : none;
 }

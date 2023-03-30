@@ -28,7 +28,7 @@ formulaireConnexion.addEventListener('submit', async (event) => {
             // La vérification de la présence token se fait au chargement de la page, le code est dans le fichier acces-editeur
             const data = await response.json();
             localStorage.setItem('token', data.token);
-            window.location.href = 'http://127.0.0.1:5500/FrontEnd/index.html';
+            window.location.href = './index.html';
 
         } else {
             messageErreur.textContent = "Erreur dans l’identifiant ou le mot de passe";

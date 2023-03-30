@@ -87,7 +87,6 @@ h1 > span {
 	font-family: 'Work Sans';
 	font-size:10px;
 	letter-spacing: 0.1em;
-;
 }
 
 h2{
@@ -112,7 +111,7 @@ li a:hover {
 
 #lien-logout {
 	position: relative;
-	right : 15px;
+	right : 17px;
 }
 
 #introduction {
@@ -260,6 +259,10 @@ footer nav ul {
 }
 
 /* STYLE ELEMENTS MODE EDITEUR */
+
+.element-editeur {
+	display : none;
+}
 
 #bandeau-editeur {
 	position : fixed;

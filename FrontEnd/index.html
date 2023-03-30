@@ -22,7 +22,7 @@
 <header>
 
 	<!-- ELEMENT EDITEUR-->
-	<section class="element-editeur" id="bandeau-editeur" style="display:none">
+	<section class="element-editeur" id="bandeau-editeur">
 
 		<div id="icone-bandeau-editeur">
 			<i class="fa-solid fa-pen-to-square"></i>
@@ -34,7 +34,7 @@
 	</section>
 
 	<div class="en-tete">
-		<a href='http://127.0.0.1:5500/FrontEnd/index.html' class="lien-logo">
+		<a href='./index.html' class="lien-logo">
 		<h1>Sophie Bluel <span>Architecte d'inteérieur</span></h1>
 		</a>
 
@@ -42,10 +42,10 @@
 			<ul>
 				<li><a href="#portfolio" class="lien-entete">projets</a></li>
 				<li><a href="#contact" class="lien-entete">contact</a></li>
-				<li><a href='http://127.0.0.1:5500/FrontEnd/connexion.html' class="lien-entete" id="lien-login">login</a></li>
+				<li><a href='./connexion.html' class="lien-entete" id="lien-login">login</a></li>
 
 				<!-- ELEMENT EDITEUR-->
-				<li><a href='http://127.0.0.1:5500/FrontEnd/index.html' class="element-editeur lien-entete" id="lien-logout" style="display:none">logout</a></li>
+				<li><a href='./index.html' class="element-editeur lien-entete" id="lien-logout">logout</a></li>
 				
 				<li><a href="#" class="lien-entete"><img src="./assets/icons/instagram.png" alt="Instagram"></a></li>
 			</ul>
@@ -62,7 +62,7 @@
 			<img src="./assets/images/sophie-bluel.png" alt="">
 
 			<!-- ELEMENT EDITEUR-->
-			<a href="#" class="element-editeur lien-modale" id="lien-edition-photo" style="display:none">
+			<a href="#" class="element-editeur lien-modale" id="lien-edition-photo">
 				<i class="fa-solid fa-pen-to-square"></i>
 				<p>modifier</p>
 			</a>
@@ -71,7 +71,7 @@
 
 		<article>
 			<!-- ELEMENT EDITEUR-->
-			<a href="#" class="element-editeur lien-modale" id="lien-edition-intro" style="display:none">
+			<a href="#" class="element-editeur lien-modale" id="lien-edition-intro">
 				<i class="fa-solid fa-pen-to-square"></i>
 				<p>modifier</p>
 			</a>
@@ -89,21 +89,21 @@
 		<div id="titre-projets">
 			<h2>Mes Projets</h2>
 			<!-- ELEMENT EDITEUR-->
-			<a href="#" class="element-editeur lien-modale" id="lien-edition-projets" style="display:none">
+			<a href="#" class="element-editeur lien-modale" id="lien-edition-projets">
 				<i class="fa-solid fa-pen-to-square"></i>
 				<p>modifier</p>
 			</a>
 
 		</div>
 
-	<aside id="arriere-modale" style="display:none">
+	<aside id="arriere-modale">
 <!-- 
 	DEBUT CODE MODALE 1 GALERIE
 -->
 
 
 
-			<div class="fenetre-modale" id="modale-projets" style="display:none">
+			<div class="fenetre-modale" id="modale-projets">
 				<a href="" id="icone-modale-projets"><i class="fa-solid fa-xmark fa-lg"></i></a>
 				<h3 class="titre-modale">Galerie photo</h3>
 				<div id="galerie-modale">
@@ -124,7 +124,7 @@
 	DEBUT CODE MODALE 2 AJOUT
 -->
 
-			<div class="fenetre-modale" id="modale-ajout" style="display:none">
+			<div class="fenetre-modale" id="modale-ajout">
 				<a href="#" id="icones-modale-ajout">
 					<i class="fa-solid fa-arrow-left fa-lg"></i>
 					<i class="fa-solid fa-xmark fa-lg" id="bouton-fermer-modale-ajout"></i>
@@ -135,7 +135,8 @@
 					<div id="carre-bleu">
 						<div id="ajout-image">
 							<i class="fa-sharp fa-regular fa-image fa-2xl"></i>
-							<input type="file" class="bouton-modale" id="image" name="image" accept="image/*" placeholder="test" required>
+							<label for="input-image" class="bouton-modale" id="image">+ Ajouter une photo</label>
+							<input type="file" name="image" id="input-image" accept="image/*" required>
 							<p>jpg, png : 4mo max</p>
 						</div>
 						<div id="division-preview-image">
@@ -152,7 +153,8 @@
 							<option value=3>Hôtel ou restaurant</option>
 						</select>
 					</div>
-					  <input type="submit" class="bouton-modale" id="bouton-modale-ajout" value="Valider">
+					<p id="erreur-envoi">Un des champs est manquant</p>
+					<input type="submit" class="bouton-modale" id="bouton-modale-ajout" value="Valider">
 				</form>
 				
 			</div>
